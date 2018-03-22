@@ -150,13 +150,16 @@ Using CATALINA_TMPDIR: /opt/apache-tomcat-test/temp
 Using JRE_HOME:        /usr
 Using CLASSPATH:       /opt/apache-tomcat-test/bin/bootstrap.jar:/opt/apache-tomcat-test/bin/tomcat-juli.jar
 ```
+
+### Bước 6: Thao tác trên Tomcat
 __Truy cập giao diện quản trị Tomcat__
 ```
 http://localhost:8080
 ```
-__Cấu hình user truy cập nội bộ Apache Manager__
+#### Cấu hình user truy cập nội bộ Apache Manager
 
-Bước 1:
+__Bước 1:__
+
 - Cấu hình file tomcat-user.xml
 - Mặc định các user sẽ không tồn tại, cần được cấu hình
 
@@ -170,7 +173,8 @@ vim ../tomcat../conf/tomcat-users.xml
 <user username="tomcat" password="123456" roles="manager-gui"/>
 ```
 
-Bước 2:
+__Bước 2:__
+
 - Thêm quyền truy cập Tomcat Manager từ xa
 - Thêm mới file nếu chưa tồn tại
 
@@ -183,7 +187,8 @@ Bước 2:
 </Context>
 ```
 
-Bước 3:
+__Bước 3:__
+
 - Khởi động lại Tomcat
 
 ```
@@ -192,3 +197,28 @@ Bước 3:
 ```
 
 > __Note__: Mặc định tại Tomcat 8.5, Tomcat Manager chỉ có thể được truy cập từ Localhost, vì thế, để có thể truy cập thông qua remote, ta cần thêm quyền cho Tomcat.
+
+#### Block truy cập tomcat manager từ bên ngoài
+> Chỉ truy cập tomcat manager tại local only
+
+__Bước 1: Tạo file__
+
+```
+vim conf/Catalina/localhost/manager.xml
+```
+Nội dung
+```
+<Context path="/manager" debug="0" privileged="true">
+
+      <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+allow="127.0.0.1"/>
+
+      <!-- Link to the user database we will get roles from
+      <ResourceLink name="users" global="UserDatabase"
+type="org.apache.catalina.UserDatabase"/>
+        -->
+</Context>
+```
+__Bước 2: Khởi động lại Tomcat__
+
+(xem các bước phía trên)
