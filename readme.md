@@ -1,5 +1,7 @@
 # Tìm hiểu về Apache Tomcat
---
-## Cài đặt Apache Tomcat 9.0
+---
+## Docs
+### [Tổng quan về Tomcat](https://github.com/lacoski/apache-tomcat/blob/master/docs/Tomcat.docx)
 
-> Xem thêm trong /docs
+## Lab
+### Cài đặt Apache Tomcat 9.0
