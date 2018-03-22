@@ -67,7 +67,7 @@ Khởi động lại
 
 __Truy cập site__
 ```
-http://ip/<Project-Database>/
+http://ip/<Project>/
 ```
 
 > LƯU Ý: Check log để biết trạng thái hoạt động web
