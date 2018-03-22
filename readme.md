@@ -5,3 +5,4 @@
 
 ## Lab
 ### [1. Cài đặt Apache Tomcat 9.0](docs/tomcat-install.md)
+### [2. Deploy project Tomcat](docs/deploy-project-tomcat.md)
